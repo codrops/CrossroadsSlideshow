@@ -289,8 +289,9 @@
         // Distance between 2 slides 
         // The amount to translate the elements that move when we navigate the slideshow
         calculateGap() {
-            const s1 = this.slides[0].DOM.el.getBoundingClientRect();
-            const s2 = this.slides[1].DOM.el.getBoundingClientRect();
+            const pickAGoodSlide = this.center === this.slidesTotal - 1 ? this.center - 1 : this.center;
+            const s1 = this.slides[pickAGoodSlide].DOM.el.getBoundingClientRect();
+            const s2 = this.slides[pickAGoodSlide + 1].DOM.el.getBoundingClientRect();
             this.gap = MathUtils.distance(s1.left + s1.width/2, s2.left + s2.width/2, s1.top + s1.height/2, s2.top + s2.height/2);
         }
         // Initialize events
